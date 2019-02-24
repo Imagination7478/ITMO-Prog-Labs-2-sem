@@ -1,13 +1,6 @@
 #include "Procedures.h"
 #include <math.h>
-
-struct ComplexNum {
-	float x, y;
-};
-
-struct Square {
-	double x1, x2, y1, y2;
-};
+#include <string>
 
 void PlusNumberPoint(double * first, double * second)
 {
@@ -18,39 +11,42 @@ void PlusNumberLink(double & first, double & second)
 	first += second;
 }
 
-void DeleteIntPartPoint(double * var)
+double DeleteIntPartPoint(double * var)
 {
 	double temp;
 	*var = modf(*var, &temp);
+	return *var;
 }
-void DeleteIntPartLink(double & var)
+double DeleteIntPartLink(double & var)
 {
 	double temp;
 	var = modf(var, &temp);
+	return var;
 }
 
 void ChangeKNumberPoint(ComplexNum *complex)
 {
-	complex->x = *x;
-	complex->y = -*y;
+	complex->y = -complex->y;
 }
 void ChangeKNumberLink(ComplexNum &complex)
 {
-	complex.x = x;
-	complex.y = -y;
+	complex.y = -complex.y;
 }
 
-void changeSquarePoint(Square *sq, double * x, double * y)
+void ChangeSquarePoint(Square *sq, int * x, int * y)
 {
-	sq->x1 += *x;
-	sq->x2 += *x;
-	sq->y1 += *y;
-	sq->y2 += *y;
+	for (int i = 0; i < 4; i++)
+	{
+		sq[i].p.x += *x;
+		sq[i].p.y += *y;
+	}
 }
-void changeSquareLink(Square &sq, double & x, double & y)
+void ChangeSquareLink(Square &sq, int & x, int & y)
 {
-	sq.x1 += x;
-	sq.x2 += x;
-	sq.y1 += y;
-	sq.y2 += x;
+	Square *temp = &sq;
+	for (int i = 0; i < 4; i++)
+	{
+		temp[i].p.x += x;
+		temp[i].p.y += y;
+	}
 }

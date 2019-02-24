@@ -1,11 +1,24 @@
 #pragma once
+
+struct ComplexNum {
+	float x, y;
+};
+
+struct Square {
+	struct Point {
+		int x, y;
+	};
+	Point p;
+	int side;
+};
+
 // 2
 void PlusNumberPoint(double *first, double *second);
 void PlusNumberLink(double &first, double &second);
 
 // 5
-void DeleteIntPartPoint(double *var);
-void DeleteIntPartLink(double &var);
+double DeleteIntPartPoint(double *var);
+double DeleteIntPartLink(double &var);
 
 // 10
 struct ComplexNum;
@@ -16,5 +29,5 @@ void ChangeKNumberLink(ComplexNum &complex);
 // 13
 struct Square;
 
-void changeSquarePoint(Square *sq, double *x, double *y);
-void changeSquareLink(Square &sq, double &x, double &y);
+void ChangeSquarePoint(Square *sq, int *x, int *y);
+void ChangeSquareLink(Square &sq, int &x, int &y);
